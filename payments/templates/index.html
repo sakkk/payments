@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-eqive="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/main.css" type="text/css">
+    <title>入出金管理</title>
+</head>
+<body>
+    <h1>入出金管理</h1>
+    <form action="/save" method="post">
+        <table>
+            <tr>
+                <td>
+                    <label for="item">項目</label><br/>
+                    <input id="item" type="text" name="item"/>
+                </td>
+                <td>
+                    <label for="amount">金額</label><br/>
+                    <input id="amount" type="text" name="amount"/>
+                </td>
+                <td>
+                    <br/>
+                    <button>追加</button>
+                </td>
+            </tr>
+            <td colspan="3">
+                <label for="memo">メモ</label>
+                <textarea id="memo" name="memo"></textarea>
+            </td>
+        </table>
+    </form>
+    <h3>入出金一覧</h3>
+    <table class="list">
+        <tr>
+            <th>日時</th>
+            <th>項目</th>
+            <th>金額</th>
+            <th>メモ</th>
+        </tr>
+        {% for deal in deals %}
+        <tr>
+            <td>{{ deal.created_at }}</td>
+            <td>{{ deal.item }}</td>
+            <td>{{ deal.amount }}</td>
+            <td>{{ deal.memo|nl2br }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td>合計</td>
+            <td>35000</td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,2 @@
+recursive-include payments *.html, *.css
+include LICENSE.txt
